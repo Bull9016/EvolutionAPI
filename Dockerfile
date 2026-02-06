@@ -1,5 +1,5 @@
-# Use Node LTS
-FROM node:18-alpine
+# Use Node.js 20 (REQUIRED by Evolution API)
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
