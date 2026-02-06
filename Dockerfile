@@ -1,20 +1,20 @@
-# Use Node.js 20 (REQUIRED by Evolution API)
 FROM node:20-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Install system dependencies
 RUN apk add --no-cache git openssl
 
-# Clone Evolution API source
+# Clone Evolution API
 RUN git clone https://github.com/EvolutionAPI/evolution-api.git .
 
 # Install dependencies
 RUN npm install
 
-# Expose Evolution API port
+# 🔥 REQUIRED: Generate Prisma client
+RUN npx prisma generate
+
+# Render needs this
+ENV PORT=8080
 EXPOSE 8080
 
-# Start the server
 CMD ["npm", "run", "start"]
