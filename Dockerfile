@@ -10,10 +10,10 @@ RUN git clone https://github.com/EvolutionAPI/evolution-api.git .
 # Install dependencies
 RUN npm install
 
-# 🔥 REQUIRED: Generate Prisma client
-RUN npx prisma generate
+# 🔥 Tell Prisma where the schema actually is
+RUN npx prisma generate --schema=src/infra/database/prisma/schema.prisma
 
-# Render needs this
+# Render requirements
 ENV PORT=8080
 EXPOSE 8080
 
